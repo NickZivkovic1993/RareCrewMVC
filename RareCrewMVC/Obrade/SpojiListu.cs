@@ -15,6 +15,7 @@ namespace RareCrewMVC.Obrade
             })
             .ToList();
 
+
             return spojeniRadnici;
         }
 

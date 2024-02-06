@@ -1,10 +1,13 @@
+using Microsoft.Extensions.DependencyInjection;
 using RareCrewMVC.Obrade;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<HTMLgenerator>(); // Add HTMLgenerator as a scoped service
+builder.Services.AddScoped<HTMLgenerator>();
+builder.Services.AddScoped<UcitajZaPieChart>();
+builder.Services.AddScoped<GenerisiChart>();
 
 var app = builder.Build();
 

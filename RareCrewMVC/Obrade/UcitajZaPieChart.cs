@@ -1,19 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using RareCrewMVC.Models;
-using RareCrewMVC.Obrade;
+using System.Reflection;
 
 namespace RareCrewMVC.Obrade
 {
-    public class GenerisiHtml
+    public class UcitajZaPieChart
     {
-        private async void GenerateReport()
+        public async Task<List<RadnikModel>> LoadDataAsync()
         {
-            HTMLgenerator reportGenerator = new HTMLgenerator();
-            await reportGenerator.GenerateHtmlReportAsync();
+            // Call the static method to load data
+            return await Loader();
         }
-
-        private async void LoadData()
+        public async Task<List<RadnikModel>> Loader()
         {
             //ovo treba da ide drugde u apsettings/json najverovatnije al za trenutne potrebe je dovoljno dobro
             string apiKey = "vO17RnE8vuzXzPJo5eaLLjXjmRW07law99QTD90zat9FfOQJKKUcgQ==";
@@ -34,11 +32,8 @@ namespace RareCrewMVC.Obrade
 
                 radnici.Last().EmployeeName = "Ostali";
 
-                //radniciListView.ItemsSource = radnici;
+                return radnici;
 
-
-
-                //File.WriteAllText("output.html", htmlContent);
             }
         }
     }
